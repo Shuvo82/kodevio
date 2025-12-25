@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../models/users_res_model.dart';
-import '../repository/currency_repository.dart';
+import '../repository/home_repository.dart';
 
 class HomeController extends GetxController {
   final UsersRepository _usersRepository = UsersRepository();
