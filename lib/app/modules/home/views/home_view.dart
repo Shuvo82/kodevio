@@ -21,11 +21,11 @@ class HomeView extends GetView<HomeController> {
       appBar: HomeAppBar(controller: controller),
       drawer: const HomeDrawer(),
       body: Obx(() {
-        if (controller.isLoading.value && controller.users.isEmpty) {
+        if (controller.isLoading.value) {
           return const HomeLoadingState();
         }
 
-        if (controller.hasError.value && controller.users.isEmpty) {
+        if (!controller.hasError.value && controller.users.isEmpty) {
           return HomeErrorState(controller: controller);
         }
 
