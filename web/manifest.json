@@ -1,6 +1,6 @@
 {
-    "name": "kodevio",
-    "short_name": "kodevio",
+    "name": "Kodevio",
+    "short_name": "Kodevio",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

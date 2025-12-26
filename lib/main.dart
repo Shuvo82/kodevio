@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kodevio/app/core/constant/app_strings.dart';
 import 'app/core/common/widgets/development_widgets/http_logs_screen.dart';
 import 'app/core/common/widgets/movable_floating_button.dart';
 import 'app/core/constant/app_colors.dart';
@@ -25,7 +26,7 @@ Future<void> main() async {
         return Obx(
           () => GetMaterialApp(
             debugShowCheckedModeBanner: false,
-            title: "Kodevio",
+            title: AppStrings.appName,
             initialRoute: AppPages.INITIAL,
             getPages: AppPages.routes,
             theme: lightThemeData,

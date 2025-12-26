@@ -21,15 +21,21 @@ class HomeListSection extends StatelessWidget with AppSizeTheme {
     final theme = Theme.of(context).colorScheme;
     final isDark = ThemeService.to.isDarkMode;
 
-    return Obx(() {
-      if (controller.filteredUsers.isEmpty) {
-        return _buildEmptyState(theme);
-      }
+    return RefreshIndicator(
+      onRefresh: controller.refreshUsers,
+      color: AppColors.primary,
+      child: Obx(() {
+        if (controller.filteredUsers.isEmpty) {
+          return SingleChildScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.8,
+              child: _buildEmptyState(theme),
+            ),
+          );
+        }
 
-      return RefreshIndicator(
-        onRefresh: controller.refreshUsers,
-        color: AppColors.primary,
-        child: ListView.builder(
+        return ListView.builder(
           controller: controller.scrollController,
           padding: EdgeInsets.symmetric(horizontal: size.paddingMedium),
           itemCount:
@@ -45,9 +51,9 @@ class HomeListSection extends StatelessWidget with AppSizeTheme {
             final user = controller.filteredUsers[index];
             return _buildUserCard(context, user, theme, isDark, index);
           },
-        ),
-      );
-    });
+        );
+      }),
+    );
   }
 
   Widget _buildEmptyState(ColorScheme theme) {
